@@ -16,14 +16,6 @@ function run() {
   }
 
   var selectedPhoto = getSelectedPhoto(app);
-
-  if (selectedPhoto == null) {
-    app.displayAlert(
-      "Failed to find selected photo.\n\nThis might happen if you select the photo in a Smart Album. Try selecting the photo while in a regular album (e.g right click photo > Add to > New Album)."
-    );
-    return;
-  }
-
   var albums = getAlbumsFlattened(app);
   var matchingAlbums = findAlbumsForPhoto(selectedPhoto.id(), albums);
   displayResults(selectedPhoto, matchingAlbums, app);
