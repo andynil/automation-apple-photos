@@ -117,6 +117,7 @@ function verifyThatPhotosAppIsRunning() {
   var app = Application.currentApplication();
   app.includeStandardAdditions = true;
   app.displayAlert("Photos app is not running");
+  return false;
 }
 
 function getPhotosApp() {

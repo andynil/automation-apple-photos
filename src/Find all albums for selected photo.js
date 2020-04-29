@@ -4,8 +4,7 @@
 // Source: https://github.com/andynil/automation-apple-photos
 
 function run() {
-  if (!isPhotosAppRunning()) {
-    warnIfPhotosAppIsClosed();
+  if (!verifyThatPhotosAppIsRunning()) {
     return;
   }
 
@@ -133,10 +132,15 @@ function isPhotosAppRunning() {
   return Application("Photos").running();
 }
 
-function warnIfPhotosAppIsClosed() {
+function verifyThatPhotosAppIsRunning() {
+  if (isPhotosAppRunning()) {
+    return true;
+  }
+
   var app = Application.currentApplication();
   app.includeStandardAdditions = true;
   app.displayAlert("Photos app is not running");
+  return false;
 }
 
 function getPhotosApp() {
